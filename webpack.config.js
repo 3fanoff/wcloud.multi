@@ -117,11 +117,13 @@ module.exports = (env, argv) => {
         plugins: [
             new HtmlWebpackPlugin({
                 title: 'WCloud MultiOTP layout',
+                basePath: basePath,
                 template: path.join(__dirname, 'src/index.html'),
                 userList: ['administrator', 'user01', 'user02', 'user03', 'vmadmin'],
             }),
             new HtmlWebpackPlugin({
                 title: 'Auth to WCloud MultiOTP',
+                basePath: basePath,
                 template: path.join(__dirname, 'src/auth.html'),
                 filename: "auth.html"
             }),
