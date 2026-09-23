@@ -1,0 +1,15 @@
+@import "bootstrap/scss/nav";
+
+$nav-pills-link-active-ico-color: $primary;
+
+.nav-pills {
+    --#{$prefix}nav-pills-link-active-ico-color: #{$nav-pills-link-active-ico-color};
+
+    .nav-link.active,
+    .show > .nav-link {
+        .ico {
+            color: var(--#{$prefix}nav-pills-link-active-ico-color);
+        }
+    }
+}
+

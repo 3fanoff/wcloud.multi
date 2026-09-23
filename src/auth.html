@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+    <div class="layout">
+        <div class="layout-both">
+            <div class="layout-container hstack">
+                <section class="container">
+                    <div class="top-logo mx-auto pb-5"><img src="<%= require('./img/logo.png') %>" width="212" height="40" alt="wcloud"></div>
+                    <div class="bg-white rounded-3 p-6 text-center">
+                        <h2>Авторизация</h2>
+                        <div class="c-tertiary mt-1">Панель управления двухфакторной авторизацией</div>
+                        <form class="auth-form mt-5" method="get" action="/index.html">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="login" placeholder="Логин">
+                                <label for="login">Логин</label>
+                            </div>
+                            <div class="input-group">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="password" placeholder="Пароль">
+                                    <label for="password">Пароль</label>
+                                </div>
+                                <a href="javascript:void(0);" class="input-group-text pass-eye js-pass-eye" data-for="password"><i class="pass-eye__ico"></i></a>
+                            </div>
+                            <div class="mt-5 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary">Авторизоваться</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

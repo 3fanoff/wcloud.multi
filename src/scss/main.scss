@@ -1,0 +1,149 @@
+$enable-rounded-squircle: false;
+
+@import "./bs/bootstrap";
+@import "./ico_style";
+@import url(https://fonts.googleapis.com/css?family=Inter+Tight:300,regular,500,italic);
+
+html {
+    height: 100%;
+}
+body {
+    background: $white;
+    height: 100%;
+}
+.layout {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    //height: 100%;
+    min-height: 100vh;
+
+    &-left {
+        flex-basis: 17.7804%;
+    }
+
+    &-right {
+        flex: auto;
+        gap: 1.25rem;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-both {
+        display: flex;
+        flex-basis: 100%;
+    }
+
+    &-top {
+        flex-basis: 9.8148%;
+        flex-shrink: 1;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-body {
+        flex: auto;
+    }
+
+    &-container {
+        @extend .rounded-3;
+        @include squircle(1);
+        background-color: $secondary;
+        width: 100%;
+    }
+}
+
+@if $enable-rounded-squircle {
+    [class*='rounded'] {
+        corner-shape: squircle;
+    }
+}
+
+.auth-box {
+    --#{$prefix}media-size: 3.625rem;
+    display: flex;
+    align-items: center;
+
+    &__avatar {
+        background: url("../img/user.svg") 0 0 no-repeat;
+        margin-right: $spacer * 0.75;
+    }
+
+    &__logout {
+        background: $white;
+        margin-left: $spacer * 2;
+        @include border-radius($border-radius);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-decoration: none;
+        color: $body-color;
+    }
+
+    &__profile span {
+        color: $body-color;
+        font-size: rfs-value(18px);
+        font-weight: $font-weight-medium;
+    }
+
+    &__logout,
+    &__avatar {
+        width: var(--#{$prefix}media-size);
+        height: var(--#{$prefix}media-size);
+    }
+}
+
+.top-logo {
+    width: 13.25rem;
+    margin: 2.0625rem 1.75rem;
+    padding: 0;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.nav-box {
+    padding: 0 .875rem;
+    &__title {
+        padding: 0 .875rem;
+    }
+}
+
+.c-tertiary {
+    color: var(--#{$prefix}tertiary-color);
+}
+
+.form-control.is-invalid {
+    color: $danger;
+}
+
+.auth-form {
+    --#{$prefix}body-bg: #{$secondary};
+    --#{$prefix}border-color: #{$secondary};
+    --#{$prefix}tertiary-bg: #{$secondary};
+}
+
+.pass-eye {
+    text-decoration: none;
+    color: $link-color;
+
+    &__ico {
+        @extend .ico;
+        &:before {
+            content: $ico-eye;
+        }
+    }
+
+    &:active &__ico {
+        &:before {
+            content: $ico-eye-off;
+        }
+    }
+}

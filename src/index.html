@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+    <div class="layout">
+        <div class="layout-left layout-container">
+            <div class="top-logo"><img src="<%= require('./img/logo.png') %>" width="212" height="40" alt="wcloud"></div>
+            <div class="nav-box">
+                <div class="nav-box__title fs-1 c-tertiary py-2">Меню</div>
+                <ul class="nav nav-pills flex-column" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex active js-tab"
+                           data-bs-toggle="tab" data-bs-target="#list-user" role="tab"
+                           aria-current="page" href="#"><i class="ico ico-users"></i>Список пользователей</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex  js-tab"
+                           data-bs-toggle="tab" data-bs-target="#add-user" role="tab"
+                           href="#"><i class="ico ico-user-plus"></i>Добавить пользователя</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex js-tab"
+                           data-bs-toggle="tab" data-bs-target="#check-user" role="tab"
+                           href="#"><i class="ico ico-search-refraction"></i>Проверить пользователя</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex js-tab"
+                           data-bs-toggle="tab" data-bs-target="#change-admin-pass" role="tab"
+                           href="#"><i class="ico ico-key"></i>Изменить пароль админа</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex js-tab"
+                           data-bs-toggle="tab" data-bs-target="#change-user-pass" role="tab"
+                           href="#"><i class="ico ico-lock"></i>Изменить пароль оператора</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex js-tab"
+                           data-bs-toggle="tab" data-bs-target="#save-config" role="tab"
+                           href="#"><i class="ico ico-cloud"></i>Сохранить конфигурацию</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex js-tab"
+                           data-bs-toggle="tab" data-bs-target="#restore-config" role="tab"
+                           href="#"><i class="ico ico-repeat"></i>Восстановить конфигурацию</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layout-right">
+            <div class="layout-top layout-container px-5 py-4 c-tertiary">
+                <span>Панель управления двухфакторной авторизацией</span>
+                <div class="auth-box">
+                    <div class="auth-box__avatar"></div>
+                    <div class="auth-box__profile"><span>Admin</span><br>pochta@yandex.ru</div>
+                    <a class="auth-box__logout ico ico-log-out" href="/auth.html"></a>
+                </div>
+            </div>
+            <div class="layout-body layout-container tab-content p-5">
+                <section id="list-user" class="tab-pane fade show active" role="tabpanel">
+                    <h2 class="display-1 text-uppercase mb-5">Список пользователей</h2>
+                    <p class="c-tertiary mb-4">5 пользователя</p>
+                    <% for (var user of htmlWebpackPlugin.options.userList) { %>
+                        <div class="bg-white rounded-3 row p-1-1 ps-5 g-0 align-items-center mt-1-1">
+                            <div class="col-4">
+                                <span class="fs-3 fw-medium"><%= user %></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="c-tertiary">AD/LDAP</span>
+                            </div>
+                            <div class="col-5 d-flex justify-content-between ps-5">
+                                <button type="button" class="btn btn-sm btn-secondary icon-link g-1-1"><i class="ico ico-trash"></i>Удалить</button>
+                                <button type="button" class="btn btn-sm btn-secondary icon-link g-1-1"><i class="ico ico-printer"></i>Печать OTP</button>
+                                <button type="button" class="btn btn-sm btn-secondary icon-link g-1-1"><i class="ico ico-passcode-lock"></i>Список резервных кодов</button>
+                            </div>
+                        </div>
+                    <% } %>
+                </section>
+                <section id="add-user" class="tab-pane fade" role="tabpanel">
+                    <h2 class="display-1 text-uppercase mb-5">Добавить нового пользователя</h2>
+                    <div class="bg-white rounded-3 p-5">
+                        <form>
+                            <div class="row mb-3">
+                                <label for="add-user_name" class="col-2 align-content-center fs-1">Имя пользователя</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="add-user_name" placeholder="Имя пользователя">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="add-user_email" class="col-2 align-content-center fs-1">Адрес электронной почты</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="add-user_email" placeholder="Адрес электронной почты">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="add-user_phone" class="col-2 align-content-center fs-1 lh-4">Мобильный телефон<br><span class="c-tertiary">SMS</span></label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="add-user_phone" placeholder="Мобильный телефон">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="add-user_use-pin" class="col-2 align-content-center fs-1">Использовать префикс PIN:</label>
+                                <div class="col-10 py-1 ps-2">
+                                    <div class="form-check form-check-inline pe-1">
+                                        <input class="form-check-input" type="radio" name="use_prefix_pin" id="add-user_use-pin" value="1">
+                                        <label class="form-check-label" for="add-user_use-pin">Да</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="use_prefix_pin" id="add-user_use-pin-2" value="0">
+                                        <label class="form-check-label" for="add-user_use-pin-2">Нет</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="add-user_prefix-pin" class="col-2 align-content-center fs-1">Задать префикс PIN</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="add-user_prefix-pin" placeholder="Задать префикс PIN">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="add-user_token" class="col-2 align-content-center fs-1">Выберите токен</label>
+                                <div class="col-10">
+                                    <select class="form-select" id="add-user_token">
+                                        <option value="1">Программный</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="add-user_token-type" class="col-2 align-content-center fs-1">Тип токена</label>
+                                <div class="col-10">
+                                    <select class="form-select" id="add-user_token-type">
+                                        <option value="1">TOTP</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-5 justify-content-end">
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-primary icon-link">Добавить <i class="ico ico-plus-circle"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <section id="check-user" class="tab-pane fade" role="tabpanel">
+                    <h2 class="display-1 text-uppercase mb-5">Проверить пользователя</h2>
+                    <div class="bg-white rounded-3 p-5 mb-4">
+                        <form>
+                            <div class="row mb-3">
+                                <label for="check-user_user" class="col-2 align-content-center fs-1">Пользователь для проверки</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="check-user_user" placeholder="Пользователь для проверки">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="check-user_otp" class="col-2 align-content-center fs-1 lh-4">OTP<br><span class="c-tertiary">C префиксом, если требуется</span></label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="check-user_otp" placeholder="OTP">
+                                </div>
+                            </div>
+                            <div class="row mt-5 justify-content-end">
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-primary icon-link">Проверить <i class="ico ico-search-refraction"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="bg-white rounded-3 p-5">
+                        <div class="row">
+                            <div class="col-2 align-content-center fs-1">Результат теста</div>
+                            <div class="col-10">
+                                <div class="alert alert-success m-0">
+                                    <div class="d-flex justify-content-center">
+                                        <i class="ico ico-check-circle me-1-1"></i><span>Успешно выполнен</span>
+                                    </div>
+                                </div>
+                                <!--
+                                <div class="alert alert-danger m-0">
+                                    <div class="d-flex justify-content-center">
+                                        <i class="ico ico-info-octagon me-1-1"></i><span>Неправильный юзер</span>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="change-admin-pass" class="tab-pane fade" role="tabpanel">
+                    <h2 class="display-1 text-uppercase mb-5">Изменить пароль админа</h2>
+                    <div class="bg-white rounded-3 p-5 mb-4">
+                        <form>
+                            <div class="row mb-3">
+                                <label for="change-admin-pass_pass" class="col-2 align-content-center fs-1">Новый пароль администратора</label>
+                                <div class="col-10">
+                                    <input type="password" class="form-control" id="change-admin-pass_pass" placeholder="Новый пароль администратора">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="change-admin-pass_pass-repeat" class="col-2 align-content-center fs-1">Повторите новый пароль<br>администратора</label>
+                                <div class="col-10">
+                                    <input type="password" class="form-control is-invalid" id="change-admin-pass_pass-repeat" placeholder="Повторите новый пароль администратора">
+                                </div>
+                            </div>
+                            <div class="alert alert-danger m-0">
+                                <div class="d-flex justify-content-center">
+                                    <i class="ico ico-info-circle me-1-1"></i><span>Пароли не совпадают</span>
+                                </div>
+                            </div>
+                            <div class="row mt-5 justify-content-end">
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-primary icon-link">Применить <i class="ico ico-check-circle"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <section id="change-user-pass" class="tab-pane fade" role="tabpanel">
+                    <h2 class="display-1 text-uppercase mb-5">Изменить пароль оператора</h2>
+                </section>
+                <section id="save-config" class="tab-pane fade" role="tabpanel">
+                    <h2 class="display-1 text-uppercase mb-5">Сохранить конфигурацию</h2>
+                    <div class="bg-white rounded-3 p-5 mb-4">
+                        <form>
+                            <div class="row mb-3">
+                                <label for="save-config_pass" class="col-2 align-content-center fs-1 lh-4">Пароль для резервной копии<br><span class="c-tertiary">Не может быть пустым</span></label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="save-config_pass" placeholder="Пароль для резервной копии">
+                                </div>
+                            </div>
+                            <div class="row mt-5 justify-content-end">
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-primary icon-link">Создать резервную копию конфигурации <i class="ico ico-cloud"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <section id="restore-config" class="tab-pane fade" role="tabpanel">
+                    <h2 class="display-1 text-uppercase mb-5">Восстановить конфигурацию</h2>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
