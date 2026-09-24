@@ -63,18 +63,169 @@ $utilities: map-remove($utilities,
     'z-index',
 );
 $utilities: map-merge(
-        $utilities,
-            (
-                "line-height": (
-                    property: line-height,
-                    class: lh,
-                    values: (
-                        1: 1,
-                        2: $line-height-sm,
-                        3: $line-height-base,
-                        4: $line-height-md,
-                        5: $line-height-lg,
+    $utilities,
+        (
+            "line-height": (
+                property: line-height,
+                class: lh,
+                values: (
+                    1: 1,
+                    2: $line-height-sm,
+                    3: $line-height-base,
+                    4: $line-height-md,
+                    5: $line-height-lg,
+                )
+            ),
+            "display": (
+                responsive: false,
+                print: false,
+                property: display,
+                class: d,
+                values: block flex none
+            ),
+            "flex": map-merge(
+                map-get($utilities, "flex"),
+                (
+                    responsive: false,
+                )
+            ),
+            "flex-direction": map-merge(
+                    map-get($utilities, "flex-direction"),
+                    (
+                        responsive: false,
                     )
-                ),
-            )
+            ),
+            "justify-content": map-merge(
+                    map-get($utilities, "justify-content"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "align-items": map-merge(
+                    map-get($utilities, "align-items"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "align-content": map-merge(
+                    map-get($utilities, "align-content"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "align-self": map-merge(
+                    map-get($utilities, "align-self"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "margin": map-merge(
+                    map-get($utilities, "margin"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "margin-x": map-merge(
+                    map-get($utilities, "margin-x"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "margin-y": map-merge(
+                    map-get($utilities, "margin-y"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "margin-top": map-merge(
+                    map-get($utilities, "margin-top"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "margin-end": map-merge(
+                    map-get($utilities, "margin-end"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "margin-bottom": map-merge(
+                    map-get($utilities, "margin-bottom"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "margin-start": map-merge(
+                    map-get($utilities, "margin-start"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "padding": map-merge(
+                    map-get($utilities, "padding"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "padding-x": map-merge(
+                    map-get($utilities, "padding-x"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "padding-y": map-merge(
+                    map-get($utilities, "padding-y"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "padding-top": map-merge(
+                    map-get($utilities, "padding-top"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "padding-end": map-merge(
+                    map-get($utilities, "padding-end"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "padding-bottom": map-merge(
+                    map-get($utilities, "padding-bottom"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "padding-start": map-merge(
+                    map-get($utilities, "padding-start"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "gap": map-merge(
+                    map-get($utilities, "gap"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "row-gap": map-merge(
+                    map-get($utilities, "row-gap"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "column-gap": map-merge(
+                    map-get($utilities, "row-gap"),
+                    (
+                        responsive: false
+                    ),
+            ),
+            "text-align": map-merge(
+                    map-get($utilities, "text-align"),
+                    (
+                        responsive: false
+                    ),
+            ),
+        ),
 );

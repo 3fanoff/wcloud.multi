@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=5, initial-scale=1.0" />
     <base href="<%= htmlWebpackPlugin.options.basePath %>">
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
+    <div id="debug" style="position:fixed;background:#000;color:#FFF; padding: 10px;display:none; font-size: 18px;"></div>
     <div class="layout">
         <div class="layout-left layout-container">
             <div class="top-logo"><img src="<%= require('./img/logo.png') %>" width="212" height="40" alt="wcloud"></div>
@@ -65,13 +67,13 @@
                     <p class="c-tertiary mb-4">5 пользователя</p>
                     <% for (var user of htmlWebpackPlugin.options.userList) { %>
                         <div class="bg-white rounded-3 row p-1-1 ps-5 g-0 align-items-center mt-1-1">
-                            <div class="col-4">
+                            <div class="col-3 col-sm-4">
                                 <span class="fs-3 fw-medium"><%= user %></span>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2 col-sm-3">
                                 <span class="c-tertiary">AD/LDAP</span>
                             </div>
-                            <div class="col-5 d-flex justify-content-between ps-5">
+                            <div class="col-7 col-sm-5 d-flex justify-content-between ps-5">
                                 <button type="button" class="btn btn-sm btn-secondary icon-link g-1-1"><i class="ico ico-trash"></i>Удалить</button>
                                 <button type="button" class="btn btn-sm btn-secondary icon-link g-1-1"><i class="ico ico-printer"></i>Печать OTP</button>
                                 <button type="button" class="btn btn-sm btn-secondary icon-link g-1-1"><i class="ico ico-passcode-lock"></i>Список резервных кодов</button>

@@ -65,7 +65,8 @@ $spacers: (
     6: $spacer * 3,
 );
 $grid-breakpoints: (
-    xs: 0
+    xs: 0,
+    sm: 980px,
 );
 
 $container-max-widths: (
